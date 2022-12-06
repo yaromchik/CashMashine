@@ -1,0 +1,61 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вход в кассу";
+}
+<header>
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</header>
+
+<body>
+    <div class="header">
+        <img width="50" src="~/images/logo.png" />
+        <div class="header-right">
+        </div>
+    </div>
+</body>
+
+<div class ="parent">
+    <div class="block">
+        <section>
+            <h3>@ViewData["Title"]</h3>
+            <form id="account" method="post">
+                <h4>Используйте аккаунт</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <table>
+                    <tr>
+                        <td>
+                <div class="form-group">
+                    <label asp-for="Input.UserName"></label>
+                    <input asp-for="Input.UserName" class="form-control" />
+                </div>
+                        </td>
+                        <td>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Создать нового пользователя</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

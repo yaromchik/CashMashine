@@ -1,0 +1,71 @@
+﻿
+.split20 {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 125px;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-color:skyblue;
+}
+.split80 {
+    height: 87.1%;
+    width: 80%;
+    position: fixed;
+    z-index: 1;
+    top: 125px;
+    overflow-x: hidden;
+    padding-top: 2px;
+    padding-left: 20px;
+    background-color:mintcream;
+}
+.left {
+    left: 0;
+    font-size: 18pt;
+    border: solid;
+    font: "Fira Sans", Serif;
+}
+
+.right {
+    font-size: 18pt;
+    right: 0;
+    font: "Fira Sans", Serif;
+    border: solid;
+}
+
+.centered {
+    position: static;
+    
+}
+
+    .centered img {
+        width: 150px;
+        border-radius: 50%;
+    }
+.headerleft {
+    height: 100%;
+    width: 95%;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-size: 18pt;
+    right: 0;
+    font: "Fira Sans", Serif
+    
+}
+
+.headerright {
+    height: 100%;
+    width: 10%;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    overflow-x: hidden;
+    padding-top: 20px;
+    font-size: 18pt;
+    right: 0;
+    font: "Fira Sans", Serif;
+}

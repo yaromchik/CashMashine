@@ -1,0 +1,109 @@
+﻿@model CashMashine_Models.VM.CartVM
+
+@{
+    int i = 0;
+}
+<link rel="stylesheet" href="~/css/site1.css" />
+
+<style>
+    .line {
+        border-bottom: 3px solid #000000 /* Параметры линии */
+    }
+</style>
+
+<body>
+    <div class="headerleft">
+
+        <img width="50" src="~/images/logo.png" />
+
+    </div>
+    <div style="text-align:left" class="headerright">
+        <partial name="_LoginPartial" />
+    </div>
+    <div class="split20 left">
+        <div class="centered">
+            <p>&nbsp  Смена: @Program.start</p>
+
+            <a asp-controller="Product" asp-action="Index" style="font-size:1.2vw; border-radius:0px" class="btn btn-primary w-100">
+                <i class="fa-solid fa-bars"></i> &nbsp; Каталог товаров
+            </a>
+
+            <a asp-controller="Cart" asp-action="Index" style="font-size:1.2vw; border-radius:0px" class="btn btn-info w-100">
+                <i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Корзина
+            </a>
+
+            @if (User.IsInRole("Manager"))
+            {
+                <a asp-controller="Product" asp-action="Create" style="font-size:1.2vw; border-radius:0px" class="btn btn-success w-100">
+                    <i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Добавить товар
+                </a>
+            }
+            <div class="line"></div>
+
+
+            @if (Model.Total != 0)
+            {
+                <a asp-controller="Cart" asp-action="RemoveAll" style="font-size:1.2vw; border-radius:0px" class="btn btn-danger w-100">
+                    <i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Очистить корзину
+                </a>
+
+
+                <a asp-controller="Cart" asp-action="PrintBeznal" style="font-size:1.2vw; border-radius:0px" class="btn btn-success w-100">
+                    <i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Оплатить безналом
+                </a>
+
+                <a asp-controller="Cart" asp-action="PrintNal" style="font-size:1.2vw; border-radius:0px" class="btn btn-success w-100">
+                    <i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Оплатить наличкой
+                </a>
+            }
+            <p style="font-size:1.2vw;cursor: not-allowed; border-radius:0px" class="btn btn-light w-100">Сумма: @Model.Total₽</p>
+        </div>
+    </div>
+    <div style="" class="split80 right">
+        <div class="centered">
+            @if(Model.Total==0){
+                <h3 style="text-align:  center">Корзина пустая</h3>
+            }
+            else{
+                <table style="width:50%;text-align:  center " border="1">
+                <tr>
+                        <th>
+                        Товар
+                    </th>
+                        <th>
+                        Цена
+                    </th>
+                        <th>
+                        Количество
+                    </th>
+                    
+                </tr>
+                @foreach(var product in Model.Product)
+                {
+
+                    <tr>
+                        <th>
+                            @product.Name
+                        </th>
+                        <th >
+                            @product.Cost
+                        </th>
+                        <th >
+                            @Model.CountProduct[i]
+                        </th>
+                        <th  >
+                            <a class="btn btn-danger w-100" asp-action="Remove" asp-route-id="@Model.CartId[i]">Удалить</a>
+                        </th>
+                    </tr>
+                    i++;
+                }
+            </table>
+            <h3>Сумма:@Model.Total</h3>
+            }
+        </div>
+    </div>
+
+</body>
+
+
+
